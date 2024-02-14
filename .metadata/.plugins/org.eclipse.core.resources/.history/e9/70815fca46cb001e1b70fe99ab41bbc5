@@ -1,0 +1,23 @@
+package application;
+
+import java.util.Locale;
+
+import entities.InvoicingMensal;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+
+		InvoicingMensal fat = new InvoicingMensal();
+
+		fat.addInvoicing("Estado de SP", 67.836,43);
+		fat.addInvoicing("Estado de RJ", 36.678,66);
+		fat.addInvoicing("Estado de MG", 29.229,88);
+		fat.addInvoicing("Estado de ES", 27.165,48);
+		fat.addInvoicing("Outros", 19.849,53);
+
+		fat.calcPercentual();
+	}
+}

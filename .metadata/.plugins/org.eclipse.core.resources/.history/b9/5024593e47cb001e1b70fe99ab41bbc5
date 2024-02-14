@@ -1,0 +1,29 @@
+package entities;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
+public class InvoicingMensal {
+	
+	private Map<String, Double> invoicingState;
+
+    public InvoicingMensal() {
+        this.invoicingState = new TreeMap<>((o1, o2) -> Double.compare(o2, o1));
+    }
+
+    public void addInvoicing(String state, double invoicing) {
+    	invoicingState.put(state, invoicing);
+    }
+
+    public void calcPercentual() {
+        double totalInvoicing = invoicingState.values().stream().mapToDouble(Double::doubleValue).sum();
+
+        for (Map.Entry<String, Double> entry : invoicingState.entrySet()) {
+            String state = entry.getKey();
+            double invoicingState = entry.getValue();
+            double percentual = (invoicingState / totalInvoicing) * 100;
+            String formattedPercentual = String.format("%.2f", percentual);
+            System.out.println(state + " - R$" + invoicingState + " - " + formattedPercentual + "%");
+        }
+    }
+}
